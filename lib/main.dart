@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:travelgram/components/aboutSection.dart';
+import 'package:travelgram/components/infoSection.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,7 +24,7 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: Color(0xFFF5F5F5),
           title: Row(
             children: <Widget>[
               Icon(
@@ -59,8 +61,30 @@ class MyApp extends StatelessWidget {
                 ))
           ],
         ),
-        body: Column(
-          children: <Widget>[],
+        body: Container(
+          decoration: BoxDecoration(
+            color: Color(0xFFF5F5F5),
+          ),
+          padding: const EdgeInsets.all(32),
+          child: Column(
+            spacing: 32,
+            children: <Widget>[
+              Column(
+                children: [
+                  AboutSection(
+                    imageUrl: 'assets/imgs/lgProfilePic.png',
+                    title: 'Isabela Torres',
+                    subtitle:
+                        'Amante de viagens, cultura e gastronomia. 🌍✈️ Aqui compartilho as histórias registradas em cada clique, explorando cantinhos fascinantes do nosso planeta a partir da movimentada cidade de São Paulo. 🏙️📸',
+                  ),
+                  InfoSection(
+                      location: 'São Paulo, Brazil',
+                      countries: '37 países',
+                      photos: '240 fotos'),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
