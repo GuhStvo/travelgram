@@ -1,15 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
-import 'package:travelgram/components/aboutSection.dart';
-import 'package:travelgram/components/infoSection.dart';
+import 'package:travelgram/screen/home.dart';
+import 'package:travelgram/screen/my_profile.dart';
+import 'package:travelgram/screen/newPagesScreen.dart';
+import 'package:travelgram/screen/people.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  int _indiceAtual = 0; // Variável para controlar o índice das telas
+  final List<Widget> _telas = [
+    NewPagesScreen(Home()),
+    NewPagesScreen(People()),
+    NewPagesScreen(MyProfile()),
+  ];
+
+  void onTabTapped(int index) {
+    setState(() {
+      _indiceAtual = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -23,6 +44,7 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         backgroundColor: Colors.white,
+        /* App bar */
         appBar: AppBar(
           backgroundColor: Color(0xFFF5F5F5),
           title: Row(
@@ -61,38 +83,36 @@ class MyApp extends StatelessWidget {
                 ))
           ],
         ),
-        body: Column(
-          spacing: 32,
-          children: <Widget>[
-            /* Section About Profile */
-            Container(
-              padding: const EdgeInsets.all(32),
-              color: Color(0xFFF5F5F5),
-              child: Column(
-                spacing: 32,
-                children: [
-                  Column(
-                    children: [
-                      AboutSection(
-                        imageUrl: 'assets/imgs/lgProfilePic.png',
-                        title: 'Isabela Torres',
-                        subtitle:
-                            'Amante de viagens, cultura e gastronomia. 🌍✈️ Aqui compartilho as histórias registradas em cada clique, explorando cantinhos fascinantes do nosso planeta a partir da movimentada cidade de São Paulo. 🏙️📸',
-                      ),
-                      InfoSection(
-                          location: 'São Paulo, Brazil',
-                          countries: '37 países',
-                          photos: '240 fotos'),
-                    ],
-                  ),
-                ],
+        /* Body */
+        body: _telas[_indiceAtual],
+        /* Botões de navegação inferior */
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: _indiceAtual,
+          onTap: onTabTapped,
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(
+                PhosphorIcons.house(PhosphorIconsStyle.regular),
+                size: 24,
+                color: Color(0xFFEF5F4C),
               ),
+              label: 'Inicio',
             ),
-            /* Galeria de fotos do perfil*/
-            Container(padding: const EdgeInsets.all(32),child: Column(children: <Widget>[
-              
-            ],),)
-
+            BottomNavigationBarItem(
+              icon: Icon(
+                PhosphorIcons.users(PhosphorIconsStyle.regular),
+                size: 24,
+                color: Color(0xFFEF5F4C),
+              ),
+              label: 'Pessoas',
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  PhosphorIcons.user(PhosphorIconsStyle.regular),
+                  size: 24,
+                  color: Color(0xFFEF5F4C),
+                ),
+                label: 'Meu perfil')
           ],
         ),
       ),
