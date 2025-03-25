@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:travelgram/components/aboutSection.dart';
+import 'package:travelgram/components/card_people.dart';
+import 'package:travelgram/data/dummy_data.dart';
 
 class People extends StatelessWidget {
   const People({super.key});
@@ -7,30 +8,16 @@ class People extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Column(
-        spacing: 32,
-        children: <Widget>[
-          /* Section About Profile */
-          Container(
-            padding: const EdgeInsets.all(32),
-            color: Color(0xFFF5F5F5),
-            child: Column(
-              spacing: 32,
-              children: [
-                Column(
-                  children: [
-                    AboutSection(
-                      imageUrl: 'assets/imgs/lgProfilePic.png',
-                      title: 'Isabela Torres',
-                      subtitle:
-                          'Amante de viagens, cultura e gastronomia. 🌍✈️ Aqui compartilho as histórias registradas em cada clique, explorando cantinhos fascinantes do nosso planeta a partir da movimentada cidade de São Paulo. 🏙️📸',
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ],
+      child: Container(
+        padding: const EdgeInsets.all(32),
+        child: Column(
+          children: dummyPerson.map((person) {
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 16.0), // Espaço entre os cards
+              child: CardPeople(person: person),
+            );
+          }).toList(),
+        ),
       ),
     );
   }

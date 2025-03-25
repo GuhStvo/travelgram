@@ -63,6 +63,9 @@ flutter:
   assets:
    - assets/imgs/lgProfilePic.png
    - assets/imgs/profilePic.png
+   - assets/imgs/user2.png
+   - assets/imgs/user3.png
+   - assets/imgs/user4.png
    - assets/imgs/imagem1.png
    - assets/imgs/imagem2.png
    - assets/imgs/busan.png

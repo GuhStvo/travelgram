@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:travelgram/models/imagem.dart';
 
 class PhotoGallery extends StatelessWidget {
-  final List<Imagem> imagens; // Alterado para uma lista de Imagem
+  final List<Imagem> imagens; 
   const PhotoGallery(this.imagens, {Key? key}) : super(key: key);
 
   @override
@@ -16,7 +16,7 @@ class PhotoGallery extends StatelessWidget {
             height: 328,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage(imagem.imageUrl), // Usar imageUrl da classe Imagem
+                image: AssetImage(imagem.imageUrl),
                 fit: BoxFit.cover,
               ),
             ),
