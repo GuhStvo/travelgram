@@ -71,19 +71,9 @@ class CardPeople extends StatelessWidget {
             ],
           ),
           TextButton(
-            onPressed: () {
-              // Aqui você pode adicionar uma ação específica para cada pessoa
-            },
+            onPressed: () {},
             child: Row(
               children: [
-                const Text(
-                  'Ver mais',
-                  style: TextStyle(
-                    color: Color(0xFFEF5F4C),
-                    fontSize: 14,
-                  ),
-                ),
-                const SizedBox(width: 4),
                 Icon(
                   PhosphorIcons.arrowRight(PhosphorIconsStyle.regular),
                   size: 16,
